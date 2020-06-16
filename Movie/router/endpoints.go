@@ -18,7 +18,7 @@ func MakeSearchEndpoint(srv handler.Service) endpoint.Endpoint {
 		url := fmt.Sprintf(URL_FORMAT, OMDBAPIKEY, req.MovieName, req.Page)
 		res, err := srv.Search(ctx, url, req)
 		if err != nil {
-			return handler.SearchResponse{nil, err.Error()}, nil
+			return handler.SearchResponse{nil, err.Error()}, errors.New(err.Error())
 		}
 		return handler.SearchResponse{res, ""}, nil
 	}

@@ -32,6 +32,7 @@ func (r *Routes) SearchMovie(w http.ResponseWriter, request *http.Request) {
 	if movieName == "" {
 		log.Println("title not found")
 		w.Write([]byte("title must be provided via QueryParams"))
+		return
 	}
 	page, err := strconv.Atoi(request.URL.Query().Get("page"))
 	if err != nil {
